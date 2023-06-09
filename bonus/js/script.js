@@ -35,7 +35,11 @@ createApp({
                 }
             ],
         activeImage: 0,
-        active: 'active'
+        autoplay: null,
+
+            created(){
+                autoPlay()
+            },
         }
     },
 
@@ -54,8 +58,14 @@ createApp({
             }
         },
 
-        showImage(){
-            this.slides.image
-        }
+        showImage(index){
+            this.activeImage = index
+        },
+
+        autoPlay(){
+            this.autoplay.setInterval(() => {
+                this.nextImg()
+            }, 3000);
+        },
     },
 }).mount('#app')
